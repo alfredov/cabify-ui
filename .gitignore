@@ -61,3 +61,4 @@ typings/
 .next
 
 # docz.js build output
+.docz
