@@ -1,0 +1,144 @@
+{
+  "config": {
+    "title": "Cabify Ui",
+    "description": "My awesome app using docz",
+    "menu": [],
+    "version": "1.0.0",
+    "repository": "https://github.com/alfredov/cabify-ui",
+    "native": false,
+    "codeSandbox": true,
+    "themeConfig": {},
+    "separator": "-"
+  },
+  "props": [
+    {
+      "key": "playground/Block.js",
+      "value": [
+        {
+          "description": "",
+          "methods": []
+        }
+      ]
+    },
+    {
+      "key": "components/Button/Button.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Button",
+          "methods": [],
+          "actualName": "Button",
+          "props": {
+            "children": {
+              "type": {
+                "name": "union",
+                "value": [
+                  {
+                    "name": "string"
+                  },
+                  {
+                    "name": "number"
+                  }
+                ]
+              },
+              "required": true,
+              "description": ""
+            },
+            "appearance": {
+              "type": {
+                "name": "enum",
+                "value": [
+                  {
+                    "value": "'default'",
+                    "computed": false
+                  },
+                  {
+                    "value": "'active'",
+                    "computed": false
+                  },
+                  {
+                    "value": "'disabled'",
+                    "computed": false
+                  }
+                ]
+              },
+              "required": false,
+              "description": "",
+              "defaultValue": {
+                "value": "'default'",
+                "computed": false
+              }
+            },
+            "size": {
+              "type": {
+                "name": "enum",
+                "value": [
+                  {
+                    "value": "'default'",
+                    "computed": false
+                  },
+                  {
+                    "value": "'small'",
+                    "computed": false
+                  },
+                  {
+                    "value": "'medium'",
+                    "computed": false
+                  }
+                ]
+              },
+              "required": false,
+              "description": "",
+              "defaultValue": {
+                "value": "'default'",
+                "computed": false
+              }
+            },
+            "onClick": {
+              "type": {
+                "name": "func"
+              },
+              "required": false,
+              "description": "",
+              "defaultValue": {
+                "value": "() => {}",
+                "computed": false
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "key": "components/Button/Button.mdx",
+      "value": {
+        "name": "Button",
+        "id": "22358cf68df433b9d9b03fa0d2fb7def",
+        "filepath": "components/Button/Button.mdx",
+        "link": "https://github.com/alfredov/cabify-ui/edit/master/components/Button/Button.mdx",
+        "slug": "components-button-button",
+        "route": "/components-button-button",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "button",
+            "depth": 1,
+            "value": "Button"
+          },
+          {
+            "slug": "appearance",
+            "depth": 2,
+            "value": "Appearance"
+          },
+          {
+            "slug": "sizes",
+            "depth": 2,
+            "value": "Sizes"
+          }
+        ]
+      }
+    }
+  ]
+}

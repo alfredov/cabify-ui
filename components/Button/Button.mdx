@@ -1,0 +1,39 @@
+---
+name: Button
+---
+
+import { Playground, Props } from 'docz';
+import Button from './Button';
+import Block from '../../playground/Block';
+
+# Button
+
+<Props of={Button} />
+
+## Appearance
+
+<Playground>
+  <Block>
+    <Button>Default</Button>
+  </Block>
+  <Block>
+    <Button appearance="active">Active</Button>
+  </Block>
+  <Block>
+    <Button appearance="disabled">Disabled</Button>
+  </Block>
+</Playground>
+
+## Sizes
+
+<Playground>
+  <Block>
+    <Button size="small">Small</Button>
+  </Block>
+  <Block>
+    <Button size="medium">Medium</Button>
+  </Block>
+  <Block>
+    <Button>Default (100% parent's width)</Button>
+  </Block>
+</Playground>
