@@ -43,6 +43,7 @@ export const colorPrintmain = '#4C58A7';
 
 // Base 8 padding & margin
 export const spacing = '8px';
+export const spacingNumber = 8;
 
 // Default border-radius
 export const radius = '4px';

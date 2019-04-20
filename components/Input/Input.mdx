@@ -1,0 +1,23 @@
+---
+name: Input
+---
+
+import { Playground, Props } from 'docz';
+import Input from './Input';
+import Block from '../../playground/Block';
+
+# Input
+
+<Props of={Input} />
+
+## Appearance
+
+<Playground>
+  <Block>
+    <Input type="text" label="Full Name" />
+  </Block>
+  <Block>
+    <Input type="email" placeholder="Email" />
+  </Block>
+  <Input type="text" value="www.cabify.com" disabled label="Website" />
+</Playground>

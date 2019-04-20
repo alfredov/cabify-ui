@@ -7,7 +7,7 @@
   "author": "Alfredo V. alfredo.villagomez.m@gmail.com",
   "license": "MIT",
   "scripts": {
-    "docz:dev": "docz dev",
+    "dev": "docz dev",
     "docz:build": "docz build"
   },
   "devDependencies": {
