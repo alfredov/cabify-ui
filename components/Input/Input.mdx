@@ -14,10 +14,15 @@ import Block from '../../playground/Block';
 
 <Playground>
   <Block>
-    <Input type="text" label="Full Name" />
+    <Input
+      name="fullName"
+      type="text"
+      label="Full Name"
+      onChange={(value, name) => console.log(value, name)}
+    />
   </Block>
   <Block>
-    <Input type="email" placeholder="Email" />
+    <Input type="email" placeholder="Email" name="email" />
   </Block>
-  <Input type="text" value="www.cabify.com" disabled label="Website" />
+  <Input type="text" value="www.cabify.com" disabled label="Website" name="website" />
 </Playground>

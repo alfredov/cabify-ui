@@ -34,7 +34,7 @@ class CodesDropdown extends Component {
         prefix: item.prefix,
       };
     }, () => {
-      this.props.onSelect(this.state.prefix);
+      this.props.onSelect(this.state.prefix, this.props.name);
     });
   }
 
@@ -106,10 +106,12 @@ CodesDropdown.propTypes = {
     prefixes.peru,
     prefixes.spain,
   ]),
+  name: PropTypes.string,
 };
 
 CodesDropdown.defaultProps = {
   defaultPrefix: null,
+  name: null,
 };
 
 export default CodesDropdown;

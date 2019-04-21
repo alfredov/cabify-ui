@@ -14,6 +14,7 @@ import CodesDropdown from './CodesDropdown';
 <Playground>
   <CodesDropdown
     defaultPrefix="54"
-    onSelect={(prefixCode) => console.log(prefixCode)}
+    name="prefix"
+    onSelect={(prefixCode, name) => console.log(prefixCode, name)}
   />
 </Playground>

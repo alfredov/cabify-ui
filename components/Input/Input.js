@@ -1,77 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
-import { css } from '@emotion/core';
 import {
-  mainfont,
-  colorWhite,
   colorBlack,
   colorPositiveLighter,
-  colorPositiveLight,
-  fontSizeXs,
-  spacing,
-  fastest,
-  fontSizeS,
-  spacingNumber,
   colorMain,
   colorFocus,
 } from '../utils/vars';
-
-function getDisableStyles({ disabled }) {
-  if (disabled) {
-    return css`
-      color: ${colorPositiveLighter};
-      cursor: not-allowed;
-    `;
-  }
-  return css``;
-}
-
-function getBorderBottomStyle({ disabled }) {
-  if (disabled) {
-    return css`border-bottom: dotted 1px ${colorPositiveLighter};`;
-  }
-  return css`border-bottom: solid 1px ${colorPositiveLighter};`;
-}
-
-const Field = styled.div`
-  display: flex;
-  transition: all ${fastest} ease;
-  ${getBorderBottomStyle}
-`;
-
-const InputWrapper = styled.div`
-  flex: 1 1 100%;
-  position: relative;
-`;
-
-const InputStyled = styled.input`
-  &:-webkit-autofill {
-    box-shadow: 0 0 0 30px ${colorWhite} inset;
-  }
-
-  border: 0;
-  color: ${colorBlack};
-  font-family: ${mainfont};
-  background-color: transparent;
-  padding: ${spacingNumber * 2}px 0 ${spacing};
-  width: 100%;
-  font-size: ${fontSizeS};
-  line-height: 16px;
-  ${getDisableStyles}
-`;
-
-const Label = styled.label`
-  color: ${colorPositiveLight};
-  font-size: ${fontSizeXs};
-  line-height: 16px;
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  transition: all ${fastest} ease;
-`;
+import {
+  Field,
+  InputStyled,
+  InputWrapper,
+  Label,
+} from './styles';
 
 const types = {
   text: 'text',
@@ -87,6 +27,8 @@ const Input = ({
   placeholder,
   label,
   disabled,
+  name,
+  required,
 }) => {
   let input = null;
   let field = null;
@@ -111,7 +53,7 @@ const Input = ({
 
   function changeValueHandler({ target }) {
     if (value === '') {
-      onChange(target.value);
+      onChange(target.value, target.name);
       input.value = target.value;
     }
   }
@@ -135,6 +77,8 @@ const Input = ({
           onFocus={focusHandler}
           onBlur={blurHandler}
           disabled={disabled}
+          required={required}
+          name={name}
           {...extraProps}
         />
         {label && <Label>{label}</Label>}
@@ -154,6 +98,8 @@ Input.propTypes = {
   onChange: PropTypes.func,
   label: PropTypes.string,
   disabled: PropTypes.bool,
+  name: PropTypes.string.isRequired,
+  required: PropTypes.bool,
 };
 
 Input.defaultProps = {
@@ -162,6 +108,7 @@ Input.defaultProps = {
   onChange: () => {},
   label: null,
   disabled: false,
+  required: false,
 };
 
 export default Input;
