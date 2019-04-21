@@ -21,7 +21,7 @@ export const MenuButtonStyled = styled(MenuButton)`
   display: flex;
   justify-content: space-between;
   background-color: ${colorWhite};
-  width: 100px;
+  width: 100%;
   height: 40px;
   border: none;
   padding: 0;
