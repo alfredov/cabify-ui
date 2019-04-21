@@ -7,6 +7,7 @@ import {
 import {
   colorPositiveLighter,
   colorWhite,
+  colorFocus,
 } from '../utils/vars';
 
 function getBorderBottom({ withborder }) {
@@ -31,6 +32,7 @@ export const MenuButtonStyled = styled(MenuButton)`
   &:focus {
     box-shadow: none;
     outline: none;
+    border-bottom: solid 1px ${colorFocus};
   }
   ${getBorderBottom}
 `;
@@ -42,8 +44,7 @@ export const List = styled(MenuList)`
   background: #FFFFFF;
   padding: 0;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16), 0 0 2px 0 rgba(0,0,0,0.16);
-
-  /* box-shadow: inset 0px 1px 1px #de1dde; */
+  border: none;
   border-radius: 4px;
   white-space: nowrap;
   outline: none;

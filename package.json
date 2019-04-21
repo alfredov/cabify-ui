@@ -2,7 +2,7 @@
   "name": "cabify-ui",
   "private": true,
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./components",
   "repository": "git@github.com:alfredov/cabify-ui.git",
   "author": "Alfredo V. alfredo.villagomez.m@gmail.com",
   "license": "MIT",
