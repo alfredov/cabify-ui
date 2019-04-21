@@ -7,10 +7,6 @@ import {
 import {
   colorPositiveLighter,
   colorWhite,
-  fontSizeXs,
-  fontSizeS,
-  colorPositiveLight,
-  colorMartinique,
 } from '../utils/vars';
 
 function getBorderBottom({ withborder }) {
@@ -39,46 +35,22 @@ export const MenuButtonStyled = styled(MenuButton)`
   ${getBorderBottom}
 `;
 
-export const PrefixWrapper = styled.div`
-  align-items: flex-start;
-  display: flex;
-  flex-direction: column;
-`;
-
-export const PrefixTitle = styled.span`
-  font-family: 'AvenirNext-Regular';
-  font-size: ${fontSizeXs};
-  color: ${colorPositiveLight};
-  text-align: left;
-  line-height: 16px;
-`;
-
-export const PrefixCode = styled.span`
-  font-family: 'AvenirNext-Regular';
-  font-size: ${fontSizeS};
-  color: ${colorMartinique};
-  text-align: left;
-  line-height: 16px;
-  margin-bottom: 5px;
-`;
-
-export const IconSpan = styled.span`
-  align-self: center;
-`;
-
-
 export const List = styled(MenuList)`
   width: 240px;
   height: 192px;
   display: block;
   background: #FFFFFF;
+  padding: 0;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16), 0 0 2px 0 rgba(0,0,0,0.16);
+
+  /* box-shadow: inset 0px 1px 1px #de1dde; */
   border-radius: 4px;
   white-space: nowrap;
   outline: none;
-  padding: 0;
+  
   font-size: 85%;
   overflow: scroll;
+
   > [data-reach-menu-item] {
     margin: 8px;
     padding: 8px 16px;
@@ -91,18 +63,18 @@ export const List = styled(MenuList)`
   }
 `;
 
-export const MenuItemContent = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: AvenirNext-Regular;
-  font-size: 14px;
-  color: #717285;
-  line-height: 16px;
-`;
+function getTopForBlurBottomBar({ buttonRect: { top, height } }) {
+  const heightMenuList = 192;
+  const extraPixelBorder = 1;
+  const heightBlurBottomBar = 24;
+  return ((top + height + heightMenuList + extraPixelBorder) - heightBlurBottomBar);
+}
 
-export const ContentLeft = styled.div``;
-
-export const ContentLeftText = styled.span`
-  margin-left: 16px;
+export const BlurBottomBar = styled.div`
+  position: fixed;
+  width: 240px;
+  top: ${getTopForBlurBottomBar}px;
+  border-radius: 4px;
+  height: 24px;
+  background-image: linear-gradient(180deg, rgba(255,255,255,0.00) 3%, #FFFFFF 89%);
 `;
