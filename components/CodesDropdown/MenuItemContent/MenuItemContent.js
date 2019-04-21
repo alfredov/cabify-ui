@@ -1,74 +1,55 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
+import { countryCodes } from '../data';
 
-// import SpainIcon from './flags/Spain';
-import ChileIcon from './Chile';
-import MexicoIcon from './Mexico';
-import ColombiaIcon from './Colombia';
-// import PeruIcon from './flags/Peru';
+import {
+  Content,
+  ContentLeft,
+  ContentLeftText,
+  ImageFlag,
+} from './styles';
 
-import mx from './mx.svg';
-import cl from './cl.svg';
-import es from './es.svg';
-import co from './co.svg';
-import pe from './pe.svg';
-import ar from './ar.svg';
-import br from './br.svg';
-import bo from './bo.svg';
-
-export const MenuItemContent = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: AvenirNext-Regular;
-  font-size: 14px;
-  color: #717285;
-  line-height: 16px;
-`;
-
-export const ContentLeft = styled.div`
-  display: flex;
-`;
-
-export const ContentLeftText = styled.span`
-  margin-left: 16px;
-`;
+import mx from './icons/mx.svg';
+import cl from './icons/cl.svg';
+import es from './icons/es.svg';
+import co from './icons/co.svg';
+import pe from './icons/pe.svg';
+import ar from './icons/ar.svg';
+import br from './icons/br.svg';
+import bo from './icons/bo.svg';
+import uy from './icons/uy.svg';
 
 function getFlagIconSource(iconType) {
   switch (iconType) {
-    case 'es':
+    case countryCodes.spain:
       return es;
-    case 'cl':
+    case countryCodes.chile:
       return cl;
-    case 'mx':
+    case countryCodes.mexico:
       return mx;
-    case 'co':
+    case countryCodes.colombia:
       return co;
-    case 'pe':
+    case countryCodes.peru:
       return pe;
-    case 'ar':
+    case countryCodes.argentina:
       return ar;
-    case 'br':
+    case countryCodes.brazil:
       return br;
-    case 'bo':
+    case countryCodes.bolivia:
       return bo;
+    case countryCodes.uruguay:
+      return uy;
     default:
       return null;
   }
 }
 
-export default ({ title, codeNumber, iconFlag }) => {
+const MenuItemContent = ({ title, codeNumber, iconFlag }) => {
   const source = getFlagIconSource(iconFlag);
   return (
-    <MenuItemContent>
+    <Content>
       <ContentLeft>
-        <img
-          style={{
-            width: 15,
-            height: 15,
-            borderRadius: '7.5px',
-            objectFit: 'cover',
-          }}
+        <ImageFlag
           src={source}
           alt={title}
         />
@@ -78,6 +59,24 @@ export default ({ title, codeNumber, iconFlag }) => {
         +
         {codeNumber}
       </span>
-    </MenuItemContent>
+    </Content>
   );
 };
+
+MenuItemContent.propTypes = {
+  title: PropTypes.string.isRequired,
+  codeNumber: PropTypes.string.isRequired,
+  iconFlag: PropTypes.oneOf([
+    countryCodes.spain,
+    countryCodes.chile,
+    countryCodes.mexico,
+    countryCodes.colombia,
+    countryCodes.peru,
+    countryCodes.argentina,
+    countryCodes.brazil,
+    countryCodes.bolivia,
+    countryCodes.uruguay,
+  ]).isRequired,
+};
+
+export default MenuItemContent;

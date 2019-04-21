@@ -11,38 +11,27 @@ import '@reach/menu-button/styles.css';
 import MenuItemContent from './MenuItemContent';
 import { List, BlurBottomBar, MenuButtonStyled } from './styles';
 import MenuButtonContent from './MenuButtonContent';
+import { orderItemsByPrefixSelected } from './utils';
+import { countries } from './data';
 
 class CodesDropdown extends Component {
   constructor(props) {
     super(props);
-    const items = [
-      { name: 'Spain', code: '34', countryCode: 'es' },
-      { name: 'Chile', code: '56', countryCode: 'cl' },
-      { name: 'Mexico', code: '521', countryCode: 'mx' },
-      { name: 'Colombia', code: '57', countryCode: 'co' },
-      { name: 'Peru', code: '11', countryCode: 'pe' },
-      { name: 'Argentina', code: '00', countryCode: 'ar' },
-      { name: 'Bolivia', code: '00', countryCode: 'bo' },
-    ];
+    const { defaultPrefix } = this.props;
+
     this.state = {
-      items,
-      prefix: items[0].code,
+      items: defaultPrefix ? orderItemsByPrefixSelected(countries, defaultPrefix) : countries,
+      prefix: defaultPrefix || countries[0].prefix,
     };
   }
 
   selectItemHandler = (item) => {
     this.setState((state) => {
       const { items } = state;
-      const newState = items.reduce((collection, value) => {
-        if (value.code !== item.code) {
-          return [...collection, value];
-        }
-        return collection;
-      }, [item]);
-
+      const newState = orderItemsByPrefixSelected(items, item.prefix);
       return {
         items: newState,
-        prefix: item.code,
+        prefix: item.prefix,
       };
     }, () => {
       this.props.onSelect(this.state.prefix);
@@ -73,11 +62,11 @@ class CodesDropdown extends Component {
                 {items.map(item => (
                   <MenuItem
                     onSelect={this.selectItemHandler.bind(this, item)}
-                    key={item.code}
+                    key={item.prefix}
                   >
                     <MenuItemContent
                       title={item.name}
-                      codeNumber={item.code}
+                      codeNumber={item.prefix}
                       iconFlag={item.countryCode}
                     />
                   </MenuItem>
@@ -92,8 +81,35 @@ class CodesDropdown extends Component {
   }
 }
 
+const prefixes = {
+  argentina: '54',
+  bolivia: '591',
+  brazil: '55',
+  chile: '56',
+  colombia: '57',
+  mexico: '521',
+  peru: '51',
+  spain: '34',
+  uruguay: '598',
+};
+
 CodesDropdown.propTypes = {
   onSelect: PropTypes.func.isRequired,
+  defaultPrefix: PropTypes.oneOf([
+    prefixes.uruguay,
+    prefixes.argentina,
+    prefixes.bolivia,
+    prefixes.brazil,
+    prefixes.chile,
+    prefixes.colombia,
+    prefixes.mexico,
+    prefixes.peru,
+    prefixes.spain,
+  ]),
+};
+
+CodesDropdown.defaultProps = {
+  defaultPrefix: null,
 };
 
 export default CodesDropdown;
