@@ -86,6 +86,7 @@ const Input = ({
           disabled={disabled}
           required={required}
           name={name}
+          pattern={(type === types.tel) ? '\\d*' : null}
           {...extraProps}
         />
         {error && <ErrorIcon />}
