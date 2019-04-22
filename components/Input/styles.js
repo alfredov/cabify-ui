@@ -11,6 +11,7 @@ import {
   fastest,
   fontSizeS,
   spacingNumber,
+  colorFbNegative,
 } from '../utils/vars';
 
 function getDisableStyles({ disabled }) {
@@ -23,9 +24,12 @@ function getDisableStyles({ disabled }) {
   return css``;
 }
 
-function getBorderBottomStyle({ disabled }) {
+function getBorderBottomStyle({ disabled, error }) {
   if (disabled) {
     return css`border-bottom: dotted 1px ${colorPositiveLighter};`;
+  }
+  if (error) {
+    return css`border-bottom: solid 1px ${colorFbNegative};`;
   }
   return css`border-bottom: solid 1px ${colorPositiveLighter};`;
 }

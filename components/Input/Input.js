@@ -12,6 +12,7 @@ import {
   InputWrapper,
   Label,
 } from './styles';
+import ErrorIcon from './ErrorIcon';
 
 const types = {
   text: 'text',
@@ -29,6 +30,7 @@ const Input = ({
   disabled,
   name,
   required,
+  error,
 }) => {
   let input = null;
   let field = null;
@@ -39,7 +41,9 @@ const Input = ({
     input.style.borderColor = 'transparent';
     input.style.backgroundColor = 'white';
     input.style.color = colorMain;
-    field.style.borderColor = colorFocus;
+    if (!error) {
+      field.style.borderColor = colorFocus;
+    }
   }
 
   function blurHandler() {
@@ -48,7 +52,9 @@ const Input = ({
     input.style.borderColor = 'transparent';
     input.style.backgroundColor = 'white';
     input.style.color = colorBlack;
-    field.style.borderBottom = `solid 1px ${colorPositiveLighter}`;
+    if (!error) {
+      field.style.borderBottom = `solid 1px ${colorPositiveLighter}`;
+    }
   }
 
   function changeValueHandler({ target }) {
@@ -67,6 +73,7 @@ const Input = ({
     <Field
       ref={(node) => { field = node; }}
       disabled={disabled}
+      error={error}
     >
       <InputWrapper>
         <InputStyled
@@ -81,6 +88,7 @@ const Input = ({
           name={name}
           {...extraProps}
         />
+        {error && <ErrorIcon />}
         {label && <Label>{label}</Label>}
       </InputWrapper>
     </Field>
@@ -100,6 +108,7 @@ Input.propTypes = {
   disabled: PropTypes.bool,
   name: PropTypes.string.isRequired,
   required: PropTypes.bool,
+  error: PropTypes.string,
 };
 
 Input.defaultProps = {
@@ -109,6 +118,7 @@ Input.defaultProps = {
   label: null,
   disabled: false,
   required: false,
+  error: null,
 };
 
 export default Input;
